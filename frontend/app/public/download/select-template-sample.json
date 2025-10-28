@@ -1,0 +1,45 @@
+{
+    "templateType": "select",
+    "questions" : [
+        {   
+            "title": "TITLE1",
+            "questionNo": 1,
+            "questionText": "QUESTION1",
+            "answerList": [
+                { "no": 1, "text": "Answer1" },
+                { "no": 2, "text": "Answer2" },
+                { "no": 3, "text": "Answer3" },
+                { "no": 4, "text": "Answer4" }
+            ],
+            "correct": [3],
+            "multiSelect": false
+        },
+        {   
+            "title": "TITLE1",
+            "questionNo": 2,
+            "questionText": "QUESTION2 (복수선택)",
+            "answerList": [
+                { "no": 1, "text": "Answer1" },
+                { "no": 2, "text": "Answer2" },
+                { "no": 3, "text": "Answer3" },
+                { "no": 4, "text": "Answer4" },
+                { "no": 5, "text": "Answer5" }
+            ],
+            "correct": [2, 3, 5],
+            "multiSelect": true
+        },
+        {   
+            "title": "TITLE1",
+            "questionNo": 3,
+            "questionText": "QUESTION3 (복수선택)",
+            "answerList": [
+                { "no": 1, "text": "Answer1" },
+                { "no": 2, "text": "Answer2" },
+                { "no": 3, "text": "Answer3" }
+                
+            ],
+            "correct": [1, 3],
+            "multiSelect": true
+        }
+    ]
+}

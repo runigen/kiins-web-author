@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
+  <g id="그룹_808" data-name="그룹 808" transform="translate(-2073.5 -526.5)">
+    <g id="사각형_1061" data-name="사각형 1061" transform="translate(2076 529)" fill="none" stroke="#676767" stroke-width="1">
+      <rect width="8" height="8" rx="1" stroke="none"/>
+      <rect x="0.5" y="0.5" width="7" height="7" rx="0.5" fill="none"/>
+    </g>
+    <path id="합치기_1" data-name="합치기 1" d="M-1126-579v0Zm0,0h0Z" transform="translate(3200 1106)" fill="#484b4e" stroke="#676767" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <path id="합치기_3" data-name="합치기 3" d="M0,4V4ZM0,4H0Z" transform="translate(2074 535)" fill="#484b4e" stroke="#676767" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <path id="합치기_2" data-name="합치기 2" d="M0,4V4ZM0,4H0Z" transform="translate(2086 531) rotate(180)" fill="#484b4e" stroke="#676767" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <path id="합치기_4" data-name="합치기 4" d="M0,0V0ZM0,0H0Z" transform="translate(2086 539) rotate(180)" fill="#484b4e" stroke="#676767" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+  </g>
+</svg>

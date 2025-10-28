@@ -1,0 +1,13 @@
+diff --git a/node_modules/html-to-image/es/index.js b/node_modules/html-to-image/es/index.js
+index 0eda938..48ac52e 100644
+--- a/node_modules/html-to-image/es/index.js
++++ b/node_modules/html-to-image/es/index.js
+@@ -6,7 +6,7 @@ import { getImageSize, getPixelRatio, createImage, canvasToBlob, nodeToDataURL,
+ export async function toSvg(node, options = {}) {
+     const { width, height } = getImageSize(node, options);
+     const clonedNode = (await cloneNode(node, options, true));
+-    await embedWebFonts(clonedNode, options);
++    // await embedWebFonts(clonedNode, options);
+     await embedImages(clonedNode, options);
+     applyStyle(clonedNode, options);
+     const datauri = await nodeToDataURL(clonedNode, width, height);

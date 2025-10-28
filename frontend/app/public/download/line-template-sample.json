@@ -1,0 +1,62 @@
+{
+    "templateType": "line",
+    "questions" : [
+        {            
+            "title": "TITLE1",
+            "questionList": [
+                { "no": 1, "text": "Question1" },
+                { "no": 2, "text": "Question2" },
+                { "no": 3, "text": "Question3" }
+            ],
+            "answerList": [
+                { "no": 1, "text": "Answer1" },
+                { "no": 2, "text": "Answer2" },
+                { "no": 3, "text": "Answer3" }
+            ],
+            "correctList": [
+                { "questionNo": 1, "answerNo": 2 },
+                { "questionNo": 2, "answerNo": 3 },
+                { "questionNo": 3, "answerNo": 1 }
+            ]            
+        },
+        {
+            "title": "TITLE2",
+            "questionList": [
+                { "no": 1, "text": "Question4" },
+                { "no": 2, "text": "Question5" },
+                { "no": 3, "text": "Question6" },
+                { "no": 4, "text": "Question7" }
+            ],
+            "answerList": [
+                { "no": 1, "text": "Answer4" },
+                { "no": 2, "text": "Answer5" },
+                { "no": 3, "text": "Answer6" },
+                { "no": 4, "text": "Answer7" }
+            ],
+            "correctList": [
+                { "questionNo": 1, "answerNo": 2 },
+                { "questionNo": 2, "answerNo": 3 },
+                { "questionNo": 3, "answerNo": 1 },
+                { "questionNo": 4, "answerNo": 4 }
+            ]            
+        },
+        {
+            "title": "TITLE3",
+            "questionList": [
+                { "no": 1, "text": "Question8" },
+                { "no": 2, "text": "Question9" },
+                { "no": 3, "text": "Question10" }
+            ],
+            "answerList": [
+                { "no": 1, "text": "Answer8" },
+                { "no": 2, "text": "Answer9" },
+                { "no": 3, "text": "Answer10" }
+            ],
+            "correctList": [
+                { "questionNo": 1, "answerNo": 2 },
+                { "questionNo": 2, "answerNo": 3 },
+                { "questionNo": 3, "answerNo": 1 }
+            ]            
+        }              
+    ]
+}

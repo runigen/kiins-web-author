@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="그룹_131" data-name="그룹 131" transform="translate(-1092 -16)">
+    <g id="그룹_126" data-name="그룹 126" transform="translate(1092 16)">
+      <rect id="사각형_5" data-name="사각형 5" width="32" height="32" transform="translate(0)" fill="none"/>
+    </g>
+    <path id="합치기_31" data-name="합치기 31" d="M15,14a1,1,0,0,1-1-1V11a1,1,0,0,1,1-1V8H11v2a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1H9a1,1,0,0,1-1-1V11a1,1,0,0,1,1-1V8H5v2a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1H3a1,1,0,0,1-1-1V11a1,1,0,0,1,1-1V7A1,1,0,0,1,4,6H9V4H8A1,1,0,0,1,7,3V-1A1,1,0,0,1,8-2h4a1,1,0,0,1,1,1V3a1,1,0,0,1-1,1H11V6h5a1,1,0,0,1,1,1v3a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1Z" transform="translate(1098 26)" fill="#b5b5b5"/>
+  </g>
+</svg>

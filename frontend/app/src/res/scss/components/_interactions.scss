@@ -1,0 +1,206 @@
+.section-interactions {
+    .btn-add-itrc {
+        display: block;
+        width: 32px;
+        height: 32px;
+        margin: 0 auto;
+        background: url('../../img/icon/icon_add_itrc.svg') center center
+            no-repeat;
+        background-size: 16px 16px;
+        @include transition(all 0.2s ease-in-out);
+        &:hover {
+            @include iconHover();
+        }
+        &:active {
+            @include iconHoverClear();
+            background-image: url('../../img/icon/icon_add_itrc_active.svg');
+        }
+    }
+    > .active,
+    > .box-list {
+        border-bottom: 2px solid #d9d9d9;
+    }
+    .box-list {
+        button {
+            width: 16px;
+            height: 16px;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            @include transition(all 0.2s ease-in-out);
+            &:hover {
+                @include iconHover();
+            }
+            &.btn-edit {
+                background-image: url('../../img/icon/icon_edit_itrc.svg');
+            }
+            &.btn-delete {
+                background-image: url('../../img/icon/icon_del_itrc.svg');
+            }
+            &.btn-add-target {
+                background-image: url('../../img/icon/icon_add_itrc.svg');
+                &:hover {
+                    @include iconHover();
+                }
+                &:active {
+                    @include iconHoverClear();
+                    background-image: url('../../img/icon/icon_add_itrc_active.svg');
+                }
+            }
+            &.btn-del-target {
+                background-image: url('../../img/icon/icon_timeline_bin.svg');
+                &:hover {
+                    @include iconHover();
+                }
+                &:active {
+                    @include iconHoverClear();
+                    background-image: url('../../img/icon/icon_timeline_bin_active.svg');
+                }
+            }
+        }
+        .list-title {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            &.active:before {
+                top: 20px;
+            }
+            .title-name {
+                width: 46px;
+                font-size: 12px;
+                color: $primary-text;
+            }
+            input[type='text'] {
+                width: 200px;
+                height: 24px;
+                padding: 0;
+                color: #484b4e;
+                font-size: 12px;
+                border-bottom: 1px solid #d9d9d9;
+                &:disabled {
+                    padding: 0;
+                    background-color: transparent;
+                    border: none;
+                }
+            }
+            .btn-del {
+                display: block;
+                width: 24px;
+                height: 24px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-image: url('../../img/icon/icon_timeline_bin.svg');
+                font-size: 0;
+                &:hover {
+                    @include iconHover();
+                }
+                &:active {
+                    @include iconHoverClear();
+                    background-image: url('../../img/icon/icon_timeline_bin_active.svg');
+                }
+            }
+            .btn-controls {
+                position: absolute;
+                top: 17px;
+                right: 0;
+                button {
+                    margin-left: 4px;
+                }
+            }
+        }
+        .interactions-container {
+            @include flex-default();
+            align-items: flex-start;
+            margin: 8px 0 0 0;
+            &:first-child {
+                margin: 0;
+            }
+            .left-box {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                width: 60px;
+                height: 24px;
+                position: relative;
+                .btn-add-target {
+                    display: block;
+                    width: 24px;
+                    height: 24px;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-image: url('../../img/icon/icon_add_itrc.svg');
+                    background-size: 12px 12px;
+                    &:hover {
+                        @include iconHover();
+                    }
+                    &:active {
+                        @include iconHoverClear();
+                        background-image: url('../../img/icon/icon_add_itrc_active.svg');
+                    }
+                }
+                strong {
+                    display: block;
+                    width: 36px;
+                    font-weight: normal;
+                    font-size: 12px;
+                }
+            }
+            .right-box {
+                width: calc(100% - 60px);
+                .ul-dropdown {
+                    width: 160px;
+                }
+                .btn-del-target {
+                    display: block;
+                    width: 24px;
+                    height: 24px;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-image: url('../../img/icon/icon_timeline_bin.svg');
+                    font-size: 0;
+                    &:hover {
+                        @include iconHover();
+                    }
+                    &:active {
+                        @include iconHoverClear();
+                        background-image: url('../../img/icon/icon_timeline_bin_active.svg');
+                    }
+                }
+            }
+            .dynamic-container,
+            .static_container {
+                margin: 8px 0 0 0;
+                &:first-child {
+                    margin: 0;
+                }
+                @include flex-default();
+                button {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
+    }
+
+    // 새로은 인터넥션 입력창은 색상 다르게 해서 구분
+    #idx_interaction_inputbox.active {
+        & + .btn-add-itrc {
+            display: none;
+        }
+
+        .box-list {
+            .list-title {
+                input[type='text'] {
+                    color: blue;
+                }
+            }
+            .interactions-container {
+                select,
+                input[type='text'] {
+                    color: blue;
+                }
+            }
+        }
+    }
+}

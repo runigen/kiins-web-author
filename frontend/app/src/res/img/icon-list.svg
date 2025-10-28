@@ -1,0 +1,8 @@
+<svg id="view_style_btn" data-name="view style btn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="그룹_841" data-name="그룹 841" transform="translate(-134.67 -7.67)">
+    <g id="그룹_813" data-name="그룹 813" transform="translate(134.67 7.67)">
+      <rect id="사각형_42" data-name="사각형 42" width="24" height="24" fill="none"/>
+    </g>
+  </g>
+  <path id="합치기_60" data-name="합치기 60" d="M0,12V8.571H3.429V12Zm4.286-.857V9.429H12v1.714ZM0,7.715V4.286H3.429V7.715Zm4.286-.857V5.144H12V6.858ZM0,3.429V0H3.429V3.429Zm4.286-.857V.858H12V2.572Z" transform="translate(6 6)" fill="#b5b5b5"/>
+</svg>

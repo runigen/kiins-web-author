@@ -1,0 +1,52 @@
+:root {
+    --timeline-zoom: 1;
+    --left-pannel-width: 200px;
+    --right-pannel-width: 300px;
+}
+
+$active: #61c4d8;
+$error: red;
+$success: yellowgreen;
+
+$primary-bg: #f2f2f2; // #484b4e;
+$primary-border: #676767;
+
+$sub-bg: #676767;
+
+$primary-text: #b5b5b5;
+$strong-text: #d2d2d2;
+$hover-text: #999999;
+
+$timeline-active: #33cccc;
+$timeline-sub: #208080;
+$timeline-point: #ff8080;
+$timeline-point-hover: #b6ff21;
+$timeline-icon-bg: #b5b5b5;
+
+$timeline-track-header-bg: #303336;
+$timeline-track-current: rgba(97, 117, 129, 0.5);
+
+$timeline-progress-line: #ff8000;
+$timeline-progress-head: #ffac40;
+
+$tab-bg: #303336;
+$tab-bg-active: #484b4e;
+$tab-text: #878787;
+$tab-text-active: #d2d2d2;
+
+$point-sub-bg: #b5b5b5;
+$point-sub-bg-active: #ffac40;
+
+$canvas-bg: #d9d9d9;
+
+$icon_effects_bg: #303336;
+
+$layer_effects_scroll_bg: #303336;
+$layer_effects_scroll_thumb: #b5b5b5;
+
+$progress-bg: #b5b5b5;
+$progress-thumb: #d2d2d2;
+
+$dialog-bg: #484b4e;
+$dialog-title: #d2d2d2;
+$dialog-title-border: #676767;

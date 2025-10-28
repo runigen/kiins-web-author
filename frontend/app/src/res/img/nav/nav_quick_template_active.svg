@@ -1,0 +1,4 @@
+<svg id="templete_list" data-name="templete list" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <rect id="사각형_5" data-name="사각형 5" width="32" height="32" fill="none"/>
+  <path id="합치기_29" data-name="합치기 29" d="M2,16a2,2,0,0,1-2-2V11H16v3a2,2,0,0,1-2,2Zm4-3h4v.5a.5.5,0,0,0,1,0v-1a.5.5,0,0,0-.5-.5h-5a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,1,0V13H6Zm10-3H0V6H16v4h0ZM6,8h4v.5a.5.5,0,0,0,1,0v-1a.5.5,0,0,0-.5-.5h-5a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,1,0V8H6ZM16,5H0V2A2,2,0,0,1,2,0H14a2,2,0,0,1,2,2V5h0ZM6,3h4v.5a.5.5,0,0,0,1,0v-1a.5.5,0,0,0-.5-.5h-5a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,1,0V3H6Z" transform="translate(8 8)" fill="#61c4d8"/>
+</svg>

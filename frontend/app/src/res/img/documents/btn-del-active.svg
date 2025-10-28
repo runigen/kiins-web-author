@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect x="-1" width="12" height="12" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="그룹_1198" data-name="그룹 1198" transform="translate(-20 -40)">
+    <g id="그룹_841" data-name="그룹 841" transform="translate(-114.67 32.33)">
+      <g id="그룹_813" data-name="그룹 813" transform="translate(134.67 7.67)">
+        <rect id="사각형_42" data-name="사각형 42" width="24" height="24" fill="none"/>
+      </g>
+    </g>
+    <g id="trashcan" transform="translate(26 46)">
+      <g id="스크롤_그룹_12" data-name="스크롤 그룹 12" transform="translate(1)" clip-path="url(#clip-path)" style="isolation: isolate">
+        <path id="trash-can-regular" d="M3.571,9.375a.358.358,0,1,1-.714,0V4.5a.358.358,0,1,1,.714,0Zm1.786,0a.358.358,0,1,1-.714,0V4.5a.358.358,0,1,1,.714,0Zm1.786,0a.358.358,0,1,1-.714,0V4.5a.358.358,0,1,1,.714,0ZM7.087.585l.819,1.29H9.464A.549.549,0,0,1,10,2.438.548.548,0,0,1,9.464,3H9.286v7.125A1.831,1.831,0,0,1,7.5,12h-5A1.832,1.832,0,0,1,.714,10.125V3H.536A.549.549,0,0,1,0,2.438a.55.55,0,0,1,.536-.563H2.094L2.913.585A1.236,1.236,0,0,1,3.953,0H6.047a1.236,1.236,0,0,1,1.04.585ZM3.382,1.875H6.618l-.424-.667a.177.177,0,0,0-.147-.083H3.953c-.058,0-.134.031-.147.083Zm-1.6,8.25a.732.732,0,0,0,.714.75h5a.732.732,0,0,0,.714-.75V3H1.786Z" fill="#61c4d8"/>
+      </g>
+    </g>
+  </g>
+</svg>

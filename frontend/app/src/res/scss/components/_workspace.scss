@@ -1,0 +1,212 @@
+.cursorCross {
+    cursor: crosshair;
+}
+
+.body-middle-workspace {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 1380px;
+    min-height: 900px;
+}
+
+/* styling */
+.workspace {
+    width: 100%;
+    height: calc(
+        100vh - 40px - 3px - 200px
+    ); /* 전체높이 - head - 타임라인 리사이즈핸들 + 타임라인 박스 */
+    position: relative;
+    overflow: auto;
+
+    // -webkit-user-select: none;
+    // -moz-user-select: none;
+    // -ms-use-select: none;
+    // user-select: none;
+
+    &.hide {
+        display: none;
+    }
+
+    &.notimeline {
+        /* 전체높이 - head - 타임라인헤더 */
+        width: 100%;
+        height: calc(100vh - 40px - 35px);
+        position: relative;
+        overflow: auto;
+    }
+    .canvas-container {
+        position: absolute;
+        width: auto;
+        height: auto;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        .canvas-sheet {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: auto;
+            height: auto;
+            background-color: #fff;
+            z-index: 100;
+            overflow: visible;
+
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1),
+                0 6px 20px 0 rgba(0, 0, 0, 0.09);
+
+            &.trans {
+                background-image: linear-gradient(
+                        45deg,
+                        #e9e9e9 25%,
+                        transparent 25%
+                    ),
+                    linear-gradient(-45deg, #e9e9e9 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, #e9e9e9 75%),
+                    linear-gradient(-45deg, transparent 75%, #e9e9e9 75%);
+                background-size: 20px 20px;
+                background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+                background-color: unset;
+            }
+
+            > .page {
+                position: inherit;
+                left: inherit;
+                top: inherit;
+                // width: 1280px;
+                // height: 800px;
+                // min-width: 300px;
+                // min-height: 300px;
+                background-color: inherit;
+                overflow: inherit;
+                z-index: inherit;
+
+                // transition: all 0.3s ease-in-out;
+
+                &.tpl::after {
+                    position: absolute;
+                    content: '';
+                    left: 0;
+                    top: -22px;
+                    width: 100px;
+                    height: 20px;
+                    text-align: center;
+                    font-size: 10px;
+                    background-color: rgba(0, 0, 0, 0.2);
+                    z-index: 100;
+                    display: grid;
+                    place-items: center;
+                    color: white;
+                    border-radius: 5px 5px 0 0;
+                }
+
+                &.tpl.line::after {
+                    content: 'line template';
+                    background-color: rgba(62, 230, 11, 0.2);
+                }
+                &.tpl.select::after {
+                    content: 'select template';
+                    background-color: rgba(137, 15, 182, 0.2);
+                }
+                &.tpl.result::after {
+                    content: 'result template';
+                    background-color: rgba(34, 73, 230, 0.2);
+                }
+                &.tpl.quiz::after {
+                    content: 'quiz template';
+                    background-color: rgba(233, 240, 11, 0.2);
+                }
+            }
+
+            .object {
+                &.tpl-point {
+                    cursor: default;
+                    .textbox p {
+                        margin: 0;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+        .canvas-sheet-shadow {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0px;
+            height: 0px;
+            z-index: 101;
+            overflow: visible;
+
+            svg {
+                &.tpl-line {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 100;
+                    pointer-events: none;
+                    > line {
+                        overflow: hidden;
+                        stroke: rgba(0, 0, 255, 0.3);
+                        stroke-width: 3px;
+                    }
+                }
+            }
+            > .tpl-ans-mark {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 50p;
+                height: 50px;
+                &.select {
+                    width: 25px;
+                    height: 25px;
+
+                    &::after {
+                        position: absolute;
+                        content: '✔';
+                        color: red;
+                        font-size: 20px;
+                        left: 65%;
+                        top: 40%;
+                        transform: translate(-50%, -50%);
+                        text-align: center;
+                    }
+                }
+                &.input {
+                    width: auto;
+                    height: 25px;
+                    color: blue;
+                    text-align: center;
+                    background-color: rgba(0, 0, 255, 0.05);
+                    padding: 5px;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+    .text-tools-shadow {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0px;
+        height: 0px;
+        z-index: 101;
+        overflow: visible;
+    }
+    .canvas-drop-area {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        overflow: visible;
+        cursor: default;
+        background-color: lightyellow;
+        opacity: 0.3;
+    }
+}

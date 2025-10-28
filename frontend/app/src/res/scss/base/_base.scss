@@ -1,0 +1,58 @@
+/* font style */
+// @font-face {
+//     font-family: "AnyTestFont";
+//     src: local("AnyTestFont"), url("AnyTestFont.eot?#iefix") format("embedded-opentype"),
+//         url('AnyTestFont.woff') format('woff'),
+//         url('AnyTestFont.otf') format('opentype'),
+//         url('AnyTestFont.svg') format('svg');
+//     font-weight: 500;
+//     font-style: normal;
+// }
+
+// @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script&family=Lobster&family=Nanum+Gothic&family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@300&family=Noto+Sans:wght@300&family=Noto+Serif+KR:wght@300&family=Noto+Serif:wght@300&family=Open+Sans:wght@300&family=Roboto+Mono:wght@300&family=Roboto+Slab:wght@300&family=Roboto:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #d9d9d9;
+}
+
+a,
+button {
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+input {
+    background: transparent;
+    outline: none;
+}
+
+ul li,
+ol li {
+    list-style-type: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type='number'] {
+    -moz-appearance: textfield;
+}

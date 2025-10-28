@@ -1,0 +1,25 @@
+{
+    "short_name": "meeoocat",
+    "name": "meeoocat Dynamic Web Editor",
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "96x96 32x32",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "favicon/favicon-96x96.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "favicon/favicon-32x32.png",
+            "type": "image/png",
+            "sizes": "32x32"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+}

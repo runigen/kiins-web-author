@@ -1,0 +1,8 @@
+<svg id="folder" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="그룹_606" data-name="그룹 606">
+    <g id="그룹_604" data-name="그룹 604">
+      <rect id="사각형_3" data-name="사각형 3" width="24" height="24" fill="none"/>
+    </g>
+  </g>
+  <path id="folder-solid" d="M1.5,42h9A1.467,1.467,0,0,0,12,40.571V34.857a1.467,1.467,0,0,0-1.5-1.429H6.75a.758.758,0,0,1-.6-.286l-.45-.571A1.53,1.53,0,0,0,4.5,32h-3A1.467,1.467,0,0,0,0,33.429v7.143A1.467,1.467,0,0,0,1.5,42Z" transform="translate(6 -25)" fill="#b5b5b5"/>
+</svg>

@@ -1,0 +1,27 @@
+/* variables and mixins */
+@import './abstracts/_variable.scss';
+@import './abstracts/_mixin.scss';
+@import './abstracts/_ui.scss';
+
+/* init */
+@import './base/_normalize.scss';
+@import './base/_base.scss';
+
+/* library */
+// @import url('./lib/');
+
+/* common layout */
+@import './layout/_layout.scss'; // Gnb 및 공통 레이아웃
+
+/* components */
+@import './components/_workspace.scss'; //Canvas
+@import './components/_timeline.scss'; //Timeline
+@import './components/_properties.scss'; //Properties
+@import './components/_interactions.scss'; //Interactions
+@import './components/_objects.scss'; //Objects
+@import './components/_modal.scss'; //Objects
+@import './components/_texteditor.scss'; //TextEditor
+@import './components/_logiceditor.scss'; //TextEditor
+
+/* pages */
+@import './pages/intro.scss'; // 기타 페이지

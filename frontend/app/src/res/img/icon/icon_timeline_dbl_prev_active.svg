@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="그룹_934" data-name="그룹 934" transform="translate(-336 -928)">
+    <rect id="사각형_46" data-name="사각형 46" width="24" height="24" transform="translate(336 928)" fill="none"/>
+    <path id="step-forward-solid" d="M10,.268V9.732c0,.147-.169.268-.375.268h-1.5c-.206,0-.375-.121-.375-.268V5.795L1.641,9.835C1,10.216,0,9.9,0,9.286V.714C0,.1,1-.216,1.641.165L7.75,4.181V.268C7.75.121,7.919,0,8.125,0h1.5C9.831,0,10,.121,10,.268Z" transform="translate(353 945) rotate(180)" fill="#61c4d8"/>
+  </g>
+</svg>

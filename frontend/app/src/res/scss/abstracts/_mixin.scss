@@ -1,0 +1,239 @@
+@mixin position(
+    $position: absolute,
+    $top: null,
+    $right: null,
+    $bottom: null,
+    $left: null,
+    $z-index: initial
+) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    z-index: $z-index;
+}
+/* ===== Usage ===== */
+// .container {
+//     @include position(absolute, 60px, 0, 0, 0, 100);
+// }
+
+@mixin clear {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+@mixin flex-default {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+/* ===== Usage ===== */
+// .container {
+//     @include flex-center()
+// }
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+@mixin flex-center-column {
+    @include flex-center;
+    flex-direction: column;
+}
+@mixin flex-center-vert {
+    display: flex;
+    align-items: center;
+}
+@mixin flex-center-horiz {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin transition($property...) {
+    -o-transition: $property;
+    -webkit-transition: $property;
+    -ms-transition: $property;
+    transition: $property;
+}
+/* ===== Usage ===== */
+// .container {
+//     @include transition(background-color 1s 2s, color 2s)
+// }
+
+@mixin transform($property...) {
+    -moz-transform: $property;
+    -o-transform: $property;
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+}
+/* ===== Usage ===== */
+// .container {
+//     @include transform(rotate(30deg))
+// }
+
+@mixin cover-background {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+/* ===== Usage ===== */
+// div {
+//     background-image: url("sample.png");
+//     @include cover-background;
+// }
+
+@mixin standard-border($radius: 4px, $width: 1px, $color) {
+    border-width: $width;
+    border-color: $color;
+    border-radius: $radius;
+    border-style: solid;
+}
+/* ===== Usage ===== */
+// .container {
+//     @include standard-border(5px, 1px, #ddd)
+// }
+
+@mixin text-short($numLines: 1) {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    @supports (-webkit-line-clamp: $numLines) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: initial;
+        display: -webkit-box;
+        -webkit-line-clamp: $numLines;
+        -webkit-box-orient: vertical;
+    }
+}
+/* ===== Usage ===== */
+// p {
+//     @include text-short(3);
+//     @include text-short(); *single line.
+// }
+
+@mixin scrollCustom {
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        height: 10px;
+        background-color: rgb(154, 154, 154, 1);
+        border-radius: 5px;
+        background-clip: padding-box;
+        border: 2px solid transparent;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: rgb(100, 100, 100, 1);
+    }
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-corner {
+        background: rgba(0, 0, 0, 0);
+    }
+}
+@mixin scrollCustom2 {
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        height: 10px;
+        background-color: rgb(154, 154, 154, 1);
+        border-radius: 5px;
+        background-clip: padding-box;
+        border: 2px solid transparent;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: rgb(100, 100, 100, 1);
+    }
+    &::-webkit-scrollbar-track {
+        background-color: #d9d9d9;
+    }
+    // &::-webkit-scrollbar-corner {
+    //     background: rgba(0, 0, 0, 0);
+    // }
+}
+@mixin backgroundIcon {
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-indent: -999999px;
+}
+
+$tablet: 768px;
+$large: 1024px;
+$desktop: 1280px;
+
+@mixin tablet {
+    @media only screen and (min-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media only screen and (min-width: $large) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media only screen and (min-width: $desktop) {
+        @content;
+    }
+}
+/* ===== Usage ===== */
+// h1 {
+//     font-size: 10px;
+//     @include tablet {font-size: 12px;}
+//     @include desktop {font-size: 20px;}
+// }
+
+@for $width from 1 through 4 {
+    .col-#{$width} {
+        width: calc(100% / $width);
+    }
+}
+// .col-1 {width: 100%;}
+// .col-2 {width: 50%;}
+// .col-3 {width: 33.333%;}
+// .col-4 {width: 25%;}
+
+.txt-hide {
+    overflow: hidden;
+    border: 0;
+    position: absolute;
+    z-index: -1;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+}
+
+.row {
+    width: 100%;
+    clear: both;
+    &:after {
+        @include clear();
+    }
+}
+
+@mixin iconHover() {
+    filter: invert(72%) sepia(3%) saturate(10%) hue-rotate(325deg)
+        brightness(86%) contrast(86%);
+}
+@mixin iconHoverClear() {
+    filter: none;
+}

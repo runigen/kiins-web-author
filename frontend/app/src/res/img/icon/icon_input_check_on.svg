@@ -1,0 +1,14 @@
+<svg id="checkbox" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="그룹_1241" data-name="그룹 1241">
+    <g id="사각형_131" data-name="사각형 131" transform="translate(6 6)" fill="none" stroke="#b5b5b5" stroke-width="2">
+      <rect width="12" height="12" rx="2" stroke="none"/>
+      <rect x="1" y="1" width="10" height="10" rx="1" fill="none"/>
+    </g>
+  </g>
+  <g id="그룹_1243" data-name="그룹 1243">
+    <rect id="사각형_131-2" data-name="사각형 131" width="24" height="24" rx="2" fill="none"/>
+  </g>
+  <g id="그룹_1242" data-name="그룹 1242" transform="translate(3 3)">
+    <rect id="사각형_131-3" data-name="사각형 131" width="6" height="6" transform="translate(6 6)" fill="#484b4e"/>
+  </g>
+</svg>
