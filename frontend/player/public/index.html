@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title>meeoocat player sample</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            #mycontent {
+                width: fit-content;
+                height: auto;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <p>가나다라마바사</p>
+        <p>가나다라마바사</p>
+        <p>가나다라마바사</p>
+        <div id="mycontent"></div>
+        <div>
+            <button onclick="meeoocatPlayer.play()">play</button>
+            <button onclick="meeoocatPlayer.pause()">pause</button>
+        </div>
+        <p>가나다라마바사</p>
+        <p>가나다라마바사</p>
+        <p>가나다라마바사</p>
+        <p>가나다라마바사</p> -->
+        <div id="mycontent"></div>
+
+        <script src="meeoocat-player.js"></script>
+        <script>
+            // param (id, 문서파일경로, 문서번호, 완료시 동작할 함수)
+
+            // 그림자극
+            meeoocatPlayer.loadContent(
+                'mycontent',
+                'docs',
+                'MCD18afdd034c1',
+                function () {
+                    // meeoocatPlayer.play();
+                },
+            );
+        </script>
+    </body>
+</html>
