@@ -41,6 +41,9 @@ public class DocumentServiceImpl implements DocumentService {
     @Value("${file.upload-path}")
     private String fileUploadPath;
 
+    @Value("${file.player-path}")
+    private String playerPath;
+
     private final DocumentRepository documentRepository;
 
     private final ResourceRepository resourceRepository;
@@ -134,7 +137,7 @@ public class DocumentServiceImpl implements DocumentService {
         String rootPath = System.getProperty("user.dir");
         String uploadPath = rootPath + File.separator + fileUploadPath;
         String uploadDocPath = uploadPath + File.separator + no;
-        String viewPath = rootPath + File.separator + "meeoocat-player";
+        String viewPath = rootPath + File.separator + playerPath;
 
         Document document = documentRepository.findById(no).orElseThrow(EntityExistsException::new);
 
@@ -288,7 +291,7 @@ public class DocumentServiceImpl implements DocumentService {
 
     private String readVersion() {
         String rootPath = System.getProperty("user.dir");
-        String viewPath = rootPath + File.separator + "meeoocat-player" + File.separator + "meeoocat-player.js.LICENSE.txt";
+        String viewPath = rootPath + File.separator + playerPath + File.separator + "meeoocat-player.js.LICENSE.txt";
         String result = "";
 
         try(BufferedReader br = Files.newBufferedReader(Paths.get(viewPath), StandardCharsets.UTF_8)) {

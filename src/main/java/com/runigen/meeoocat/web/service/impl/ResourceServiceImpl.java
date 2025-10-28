@@ -1,16 +1,10 @@
 package com.runigen.meeoocat.web.service.impl;
 
-import com.runigen.meeoocat.constant.ErrorCode;
-import com.runigen.meeoocat.entity.Document;
 import com.runigen.meeoocat.entity.Resource;
-import com.runigen.meeoocat.exception.MeeoocatException;
-import com.runigen.meeoocat.mapper.DocumentMapper;
 import com.runigen.meeoocat.mapper.ResourceMapper;
 import com.runigen.meeoocat.repository.ResourceRepository;
-import com.runigen.meeoocat.utils.CommonUtils;
 import com.runigen.meeoocat.vo.ResourceVO;
 import com.runigen.meeoocat.web.service.ResourceService;
-import jakarta.persistence.EntityExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,11 +25,11 @@ public class ResourceServiceImpl implements ResourceService {
     @Value("${file.upload-path}")
     private String fileUploadPath;
 
+    @Value("${file.player-path}")
+    private String playerPath;
+
     @Autowired
     ResourceLoader resourceLoader;
-
-    @Value("${file.upload-path}")
-    private String fileUpliadPath;
 
     private final ResourceRepository resourceRepository;
 
@@ -65,9 +59,9 @@ public class ResourceServiceImpl implements ResourceService {
         String orgFileName = files.getOriginalFilename();
         String ext = orgFileName.substring(orgFileName.lastIndexOf(".") + 1);
 
-        Path directory = Paths.get(rootPath, fileUpliadPath, no, "res");
+        Path directory = Paths.get(rootPath, fileUploadPath, no, "res");
         Files.createDirectories(directory);
-        File saveFile = new File(rootPath + File.separator + fileUpliadPath + File.separator + no + File.separator + "res" + File.separator + fileId + "." + ext);
+        File saveFile = new File(rootPath + File.separator + fileUploadPath + File.separator + no + File.separator + "res" + File.separator + fileId + "." + ext);
         files.transferTo(saveFile);
 
         Resource resource = new Resource();
@@ -113,12 +107,12 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public void uploadPlayer(MultipartFile player, MultipartFile license) throws IOException {
-        String rootPath = System.getProperty("user.dir");
-        Path playerPath = Paths.get(rootPath, "meeoocat-player");
-        Files.createDirectories(playerPath);
-        File playerFile = new File(playerPath + File.separator + "meeoocat-player.js");
-        player.transferTo(playerFile);
-        File licenseFile = new File(playerPath + File.separator + "meeoocat-player.js.LICENSE.txt");
-        license.transferTo(licenseFile);
+        String _rootPath = System.getProperty("user.dir");
+        Path _playerPath = Paths.get(_rootPath, playerPath);
+        Files.createDirectories(_playerPath);
+        File _playerFile = new File(_playerPath + File.separator + "meeoocat-player.js");
+        player.transferTo(_playerFile);
+        File _licenseFile = new File(_playerPath + File.separator + "meeoocat-player.js.LICENSE.txt");
+        license.transferTo(_licenseFile);
     }
 }

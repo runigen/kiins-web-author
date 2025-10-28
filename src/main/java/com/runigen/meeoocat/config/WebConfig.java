@@ -13,7 +13,10 @@ import java.util.concurrent.TimeUnit;
 public class WebConfig implements WebMvcConfigurer {
 
     @Value("${file.upload-path}")
-    private String fileUploadPath;
+    private String uploadPath;
+
+    @Value("${file.player-path}")
+    private String playerPath;
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -25,14 +28,14 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        String rootPath = System.getProperty("user.dir");
-        String uploadPath = "file://" + rootPath + File.separator + fileUploadPath + File.separator;
-        String jsPath = "file://" + rootPath + File.separator + "meeoocat-player" + File.separator;
+        String _rootPath = System.getProperty("user.dir");
+        String _uploadPath = "file://" + _rootPath + File.separator + uploadPath + File.separator;
+        String _jsPath = "file://" + _rootPath + File.separator + playerPath + File.separator;
 
-        System.out.println("jsPath : " + jsPath);
+        System.out.println("jsPath : " + _jsPath);
 
         registry.addResourceHandler("/**", "/viewer/**")
-                .addResourceLocations(uploadPath, jsPath)
+                .addResourceLocations(_uploadPath, _jsPath)
                 .setCacheControl(CacheControl.maxAge(10, TimeUnit.MINUTES));
     }
 

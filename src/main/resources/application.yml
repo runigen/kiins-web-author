@@ -36,6 +36,7 @@ mybatis:
 
 file:
   upload-path: docs
+  player-path: meeoocat-player
 
 logging:
   level:
