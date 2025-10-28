@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.runigen.meeoocat.mapper.ResourceMapper">
+
+    <select id="getResourceList" resultType="com.runigen.meeoocat.entity.Resource" parameterType="java.util.HashMap">
+        SELECT
+            file_id,
+            org_file_name,
+            file_name,
+            file_ext,
+            url,
+            file_size,
+            document_id,
+            mime_type,
+            reg_date
+--             DATE_FORMAT(reg_date, '%Y-%m-%d %H:%i:%s') AS reg_date
+        FROM
+            resource
+        WHERE 1 = 1
+        AND document_id = #{no}
+        ORDER BY reg_date desc
+    </select>
+    <insert id="insertDocumentResource">
+        INSERT INTO resource
+        (
+            file_id
+            ,org_file_name
+            ,file_name
+            ,file_ext
+            ,url
+            ,file_size
+            ,document_id
+            ,mime_type
+            ,reg_date
+        )
+        SELECT
+            file_id
+             ,org_file_name
+             ,file_name
+             ,file_ext
+             ,REPLACE(url, #{orgDocumentId}, #{newDocumentId}) as url
+             ,file_size
+             ,#{newDocumentId}
+             ,mime_type
+             ,now()
+        FROM resource
+        WHERE document_id  = #{orgDocumentId}
+    </insert>
+</mapper>

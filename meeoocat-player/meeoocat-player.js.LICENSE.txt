@@ -1,0 +1,7 @@
+/*!
+ * Meeoocat Player
+ * Version: 0.7.0
+ * Company : RUNIGEN.CO.,LTD
+ * Contact : runigen@runigen.com
+ * copyrightⓒ 2021 All rights reserved by RUNIGEN
+ */

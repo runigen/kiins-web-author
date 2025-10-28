@@ -1,0 +1,44 @@
+server:
+  port: 9140
+
+spring:
+  ## JPA Setting Info
+  jpa:
+    hibernate:
+      ddl-auto: update # option type: create, create-drop, update, validate, none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+        dialect: org.hibernate.dialect.MySQL57Dialect
+
+  datasource:
+    url: jdbc:mariadb://kiins.co.kr:3307/web-author
+    username: root
+    password: qwerqwer12!
+
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+
+  mvc:
+    view:
+      suffix: .html
+
+mybatis:
+  mapper-locations: mapper/**.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    return-instance-for-empty-row: true
+    call-setters-on-nulls: true
+
+file:
+  upload-path: docs
+
+logging:
+  level:
+    root: info
+  file:
+    name: ./logs/kiins-web-author.log

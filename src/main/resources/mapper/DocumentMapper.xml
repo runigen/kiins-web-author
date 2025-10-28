@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.runigen.meeoocat.mapper.DocumentMapper">
+
+    <select id="getDocumentList" resultType="com.runigen.meeoocat.entity.Document" parameterType="com.runigen.meeoocat.vo.DocumentVO">
+        SELECT
+            no,
+            name,
+            user_id,
+            IFNULL(folder_id, 0) AS folder_id,
+            IFNULL(is_export, 'N') AS is_export,
+            export_date,
+            reg_date,
+            mod_date
+        FROM
+            document
+        WHERE 1 = 1
+        AND user_id = #{userId}
+        <if test="no != null">
+            AND no = #{no}
+        </if>
+        <if test="name != null">
+            AND name = #{name}
+        </if>
+        <if test="regStartDate != null and regEndDate != null">
+            AND reg_date BETWEEN #{regStartDate} AND #{regEndDate}
+        </if>
+        <if test="modStartDate != null and modEndDate != null">
+            AND mod_date BETWEEN #{modStartDate} AND #{modEndDate}
+        </if>
+        ORDER BY mod_date desc
+    </select>
+
+    <resultMap id="selectDocument" type="java.util.HashMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="userId" column="user_id"/>
+        <result property="upperId" column="upper_id"/>
+        <result property="isFolder" column="is_folder"/>
+        <result property="cnt" column="cnt"/>
+        <result property="isExport" column="is_export"/>
+        <result property="exportDate" column="export_date"/>
+        <result property="regDate" column="reg_date"/>
+        <result property="modDate" column="mod_date"/>
+    </resultMap>
+    <select id="getDocumentListByFolderId" resultMap="selectDocument" parameterType="com.runigen.meeoocat.vo.DocumentVO">
+        SELECT
+            id,
+            name,
+            user_id,
+            upper_id,
+            is_folder,
+            cnt,
+            is_export,
+            date_format(export_date, '%Y-%m-%d %H:%i:%s') AS export_date,
+            date_format(reg_date, '%Y-%m-%d %H:%i:%s') AS reg_date,
+            date_format(mod_date, '%Y-%m-%d %H:%i:%s') AS mod_date
+        FROM
+        (
+            SELECT
+                f.folder_id AS id ,
+                f.name,
+                f.user_id,
+                f.upper_id AS upper_id,
+                'Y' AS is_folder,
+                IFNULL(IFNULL(d2.cnt, 0) + IFNULL(f2.cnt, 0), 0) AS cnt,
+                'N' AS is_export,
+                null AS export_date,
+                f.reg_date,
+                f.mod_date
+            FROM
+                folder f LEFT OUTER JOIN
+                (SELECT COUNT(no) AS cnt, folder_id FROM document GROUP BY folder_id) d2
+                ON f.folder_id = d2.folder_id
+                LEFT OUTER JOIN
+                (SELECT COUNT(folder_id) AS cnt, upper_id FROM folder GROUP BY upper_id) f2
+                ON f.folder_id = f2.upper_id
+            WHERE user_id =  #{userId}
+            <choose>
+                <when test="folderId != null and folderId != '' and folderId != 0">
+                    AND f.upper_id = #{folderId}
+                </when>
+                <otherwise>
+                    AND (f.upper_id IS NULL OR f.upper_id = 0)
+                </otherwise>
+            </choose>
+            UNION ALL
+            SELECT
+                no AS id,
+                name,
+                user_id,
+                folder_id AS upper_id,
+                'N' AS is_folder,
+                0 AS cnt,
+                IFNULL(d.is_export, 'N') AS is_export,
+                d.export_date,
+                reg_date,
+                mod_date
+            FROM
+                document d
+            WHERE user_id =  #{userId}
+            <choose>
+                <when test="folderId != null and folderId != '' and folderId != 0">
+                    AND folder_id = #{folderId}
+                </when>
+                <otherwise>
+                    AND (folder_id IS NULL OR folder_id = 0)
+                </otherwise>
+            </choose>
+        ) a
+        WHERE 1 = 1
+    </select>
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.runigen.meeoocat.mapper.FolderMapper">
+
+    <select id="getFolderList" resultType="com.runigen.meeoocat.entity.Folder" parameterType="com.runigen.meeoocat.vo.FolderVO">
+        SELECT
+            folder_id,
+            name,
+            upper_id,
+            user_id,
+            reg_date,
+            mod_date
+        FROM
+            folder
+        WHERE 1 = 1
+        AND user_id = #{userId}
+        <if test="name != null">
+            AND name like CONCAT('%', #{name}, '%')
+        </if>
+        <if test="regStartDate != null and regEndDate != null">
+            AND reg_date BETWEEN #{regStartDate} AND #{regEndDate}
+        </if>
+        <if test="modStartDate != null and modEndDate != null">
+            AND mod_date BETWEEN #{modStartDate} AND #{modEndDate}
+        </if>
+        ORDER BY mod_date desc
+    </select>
+</mapper>

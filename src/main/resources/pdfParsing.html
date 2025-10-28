@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>PDF 파일 테스트</title>
+    <style>
+    .my-div {
+      border : 1px solid black;
+      position : relative;
+      margin : 5px;
+    }
+
+    .my-span {
+        position: absolute;
+    }
+  </style>
+</head>
+<body>
+<h1>PDF 파일 테스트</h1>
+<form id="myForm">
+    <input type="file" name="file" id="file-input" accept="application/pdf">
+    <button type="button" onclick="uploadFile()">전송</button>
+    <br>
+    <br>
+    <div id="container">
+
+    </div>
+</form>
+
+<script>
+        function uploadFile() {
+
+            // container 영역 초기화
+            var containerArea = document.getElementById("container");
+            containerArea.innerHTML = "";
+
+            // 파일을 읽어서 form 데이터 multipart로 전송하기
+            // pdf_id, file 전송.
+            const fileInput = document.getElementById('file-input');
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            const pdfId = Math.random().toString(36).substr(2,11);  // 실제 프론트소스에서는 id로 변경.
+            formData.append('pdf_id', pdfId);     // pdf_id
+            formData.append('file', file);      // file pdf만
+
+            const pdfUrl = 'http://localhost:9140/api/pdf/save';
+
+            axios.post(pdfUrl, formData, {
+                headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            })
+            .then(function(response) {
+              console.log('파일 전송 성공:', response);
+
+              if(response.status != 200 || response.data.length == 0) {
+                 alert('데이터가 없습니다..');
+                 return false;
+              }
+
+              // 데이터를 가져왔을 때 수행할 로직
+              const data = response.data.data;  // 전체 데이터
+              const info = data.info;           // info 정보
+              const pages = data.pages;         // data 정보
+
+                // 데이터를 기반으로 동적으로 HTML 태그 생성
+                for (let i = 0; i < pages.length; i++) {
+                    const item = pages[i];
+
+                    // 페이지 영역 생성
+                    const newElement = document.createElement('div');
+                    newElement.style.width = item.pageNum.width + "px";
+                    newElement.style.height = item.pageNum.height + "px";
+                    newElement.classList.add('my-div');
+
+                    // 컨테이너에 새로운 엘리먼트 추가
+                    container.appendChild(newElement);
+
+                    for(let z = 0; z < pages[i].images.length; z++) {
+                        let imageElement = document.createElement('img');
+                        // 이미지 속성 설정
+                        var imageUrl = "http://localhost:9140/" + pages[i].images[z].accessUrl;
+                        imageElement.src = imageUrl;
+                        imageElement.alt = "Image";
+                        imageElement.style.width = pages[i].images[z].width + "px";
+                        imageElement.style.height = pages[i].images[z].height + "px";
+                        imageElement.style.position = "absolute";
+                        imageElement.style.left = pages[i].images[z].positionX + "px";
+                        imageElement.style.top = pages[i].images[z].positionY + "px";
+                        imageElement.style.zIndex = 0;
+
+                        newElement.appendChild(imageElement);
+                    }
+
+
+                    for(let j = 0; j < pages[i].texts.length; j++) {
+                        let textElement = document.createElement('span');
+                        textElement.classList.add('my-span');
+                        textElement.textContent = pages[i].texts[j].text;
+                        textElement.style.display = "block";
+                        //textElement.style.fontSize = pages[i].texts[j].fontSize + "px";   // 폰트 사이즈는 pdf랑 안맞는 경우가 있어 일단 제외.
+                        textElement.style.fontSize = "10px"
+                        textElement.style.top = pages[i].texts[j].positionY - 8 + "px";     // 텍스트 y좌표 오차 수정.
+                        textElement.style.left = pages[i].texts[j].positionX + "px";
+
+                        newElement.appendChild(textElement);
+                    }
+                }
+            })
+            .catch(function(error) {
+              console.error('파일 전송 실패:', error);
+              // 에러 처리 로직 작성
+            });
+        }
+    </script>
+
+</body>
+</html>
