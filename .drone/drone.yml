@@ -10,8 +10,8 @@ steps:
   - name: meeoocat-api-build
     image: docker/compose:1.28.5
     volumes:
-      - name: meeoocat_docs
-        path: /usr/src/app/docs
+      - name: docker_sock
+        path: /var/run/docker.sock
     commands:
       - echo ">>>>>>>>>>> Building ( $CONTAINER_NAME )"
       - echo ">>>>>>>>>>> Build PWD >> $PWD"
@@ -36,7 +36,7 @@ environment:
   CONTAINER_NAME: meeoocat-api
   KIINS_COMPOSE_FILE: ./.drone/dev/docker-compose.yml
 
-volumes:
-  - name: meeoocat_docs
-    host:
-      path: /usr/src/app/docs
+#volumes:
+#  - name: meeoocat_docs
+#    host:
+#      path: /usr/src/app/docs
