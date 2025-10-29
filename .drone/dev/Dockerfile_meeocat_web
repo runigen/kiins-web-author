@@ -8,7 +8,7 @@ ARG APP_DIR=frontend/app
 # 종속성 설치 (package.json, package-lock.json만 먼저 복사 → 캐싱 최적화)
 COPY ${APP_DIR} ./
 # 프로덕션 및 빌드에 필요한 dependencies 설치
-RUN npm ci
+RUN npm i
 # Next.js 빌드
 RUN npm run build:prd
 
