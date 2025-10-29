@@ -39,6 +39,11 @@ environment:
   CONTAINER_NAME: meeoocat-api
   KIINS_COMPOSE_FILE: ./.drone/dev/docker-compose.yml
 
+volumes:
+  - name: docker_sock
+    host:
+      path: /var/run/docker.sock
+
 #volumes:
 #  - name: meeoocat_docs
 #    host:
