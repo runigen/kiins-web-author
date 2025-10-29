@@ -13,3 +13,16 @@ services:
       - "9140:9140"
     environment:
       JAVA_OPTS: "-Xms1048m -Xmx1048m"
+
+  meeoocat-web:
+    image: meeoocat-web
+    container_name: meeoocat-web
+    profiles:
+      - meeoocat-web
+    build:
+      context: ../..
+      dockerfile: ./.drone/dev/Dockerfile_meeocat_web
+    restart: always
+    network_mode: bridge
+    ports:
+      - "9120:80"

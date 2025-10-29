@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: meeoocat-api-build
+name: meeoocat-build
 
 trigger:
   branch:
@@ -8,7 +8,7 @@ trigger:
   event:
     - push
 steps:
-  - name: meeoocat-api-build
+  - name: meeoocat-build
     image: docker/compose:1.28.5
     volumes:
       - name: docker_sock
@@ -21,8 +21,9 @@ steps:
       - ls ./.drone/dev/
       - hostname
       - docker-compose --version
-      - docker-compose -f ./.drone/dev/docker-compose.yml --profile meeoocat-api build
-  - name: dev-meeocat-api-deploy
+      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME build
+      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_WEB_NAME build
+  - name: meeocat-deploy
     image: docker/compose:1.28.5
     volumes:
       - name: docker_sock
@@ -32,11 +33,14 @@ steps:
       - echo ">>>>>>>>>>> Deploy PWD >> $PWD"
       - ls -al
       - hostname
-      - docker-compose -f ./.drone/dev/docker-compose.yml --profile meeoocat-api down
-      - docker-compose -f ./.drone/dev/docker-compose.yml --profile meeoocat-api up -d
+      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME down
+      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME up -d
+      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_WEB_NAME down
+      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_WEB_NAME up -d
 
 environment:
   CONTAINER_NAME: meeoocat-api
+  CONTAINER_WEB_NAME: meeoocat-web
   KIINS_COMPOSE_FILE: ./.drone/dev/docker-compose.yml
 
 volumes:
