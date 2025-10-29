@@ -16,7 +16,9 @@ steps:
     commands:
       - echo ">>>>>>>>>>> Building ( $CONTAINER_NAME )"
       - echo ">>>>>>>>>>> Build PWD >> $PWD"
+      - echo ">>>>>>>>>>> KIINS_COMPOSE_FILE >> $KIINS_COMPOSE_FILE"
       - ls -al
+      - ls ./.drone/dev/
       - hostname
       - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME build
   - name: dev-meeocat-api-deploy
