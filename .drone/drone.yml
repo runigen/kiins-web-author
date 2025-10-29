@@ -29,7 +29,7 @@ steps:
       - name: docker_sock
         path: /var/run/docker.sock
     commands:
-      - echo ">>>>>>>>>>> Deploying ( $CONTAINER_NAME )"
+      - echo ">>>>>>>>>>> Deploying ( $CONTAINER_WEB_NAME )"
       - echo ">>>>>>>>>>> Deploy PWD >> $PWD"
       - ls -al
       - hostname
@@ -45,7 +45,7 @@ steps:
       - echo ">>>>>>>>>>> Deploy PWD >> $PWD"
       - ls -al
       - hostname
-      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME down --remove-orphans
+      #- docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME down --remove-orphans
       - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME up -d --remove-orphans
 environment:
   CONTAINER_NAME: meeoocat-new-api
