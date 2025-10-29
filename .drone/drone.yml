@@ -20,6 +20,7 @@ steps:
       - ls -al
       - ls ./.drone/dev/
       - hostname
+      - docker-compose --version
       - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME build
   - name: dev-meeocat-api-deploy
     image: docker/compose:1.28.5
