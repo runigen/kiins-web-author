@@ -8,6 +8,7 @@ services:
       context: ../..
       dockerfile: ./.drone/dev/Dockerfile_meeocat_api
     restart: always
+    network_mode: bridge
     ports:
       - "9140:9140"
     environment:
