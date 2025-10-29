@@ -23,7 +23,7 @@ steps:
       - docker-compose --version
       - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME build
       - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_WEB_NAME build
-  - name: meeocat-deploy
+  - name: meeocat-deploy-web
     image: docker/compose:1.28.5
     volumes:
       - name: docker_sock
@@ -33,11 +33,20 @@ steps:
       - echo ">>>>>>>>>>> Deploy PWD >> $PWD"
       - ls -al
       - hostname
-      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME down
-      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME up -d
-      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_WEB_NAME down
-      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_WEB_NAME up -d
-
+      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_WEB_NAME down --remove-orphans
+      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_WEB_NAME up -d --remove-orphans
+  - name: meeocat-deploy-api
+    image: docker/compose:1.28.5
+    volumes:
+      - name: docker_sock
+        path: /var/run/docker.sock
+    commands:
+      - echo ">>>>>>>>>>> Deploying ( $CONTAINER_NAME )"
+      - echo ">>>>>>>>>>> Deploy PWD >> $PWD"
+      - ls -al
+      - hostname
+      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME down --remove-orphans
+      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME up -d --remove-orphans
 environment:
   CONTAINER_NAME: meeoocat-new-api
   CONTAINER_WEB_NAME: meeoocat-web
