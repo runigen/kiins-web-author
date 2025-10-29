@@ -21,7 +21,7 @@ steps:
       - ls ./.drone/dev/
       - hostname
       - docker-compose --version
-      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME build
+      - docker-compose -f ./.drone/dev/docker-compose.yml --profile meeoocat-api build
   - name: dev-meeocat-api-deploy
     image: docker/compose:1.28.5
     volumes:
@@ -32,8 +32,8 @@ steps:
       - echo ">>>>>>>>>>> Deploy PWD >> $PWD"
       - ls -al
       - hostname
-      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME down
-      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME up -d
+      - docker-compose -f ./.drone/dev/docker-compose.yml --profile meeoocat-api down
+      - docker-compose -f ./.drone/dev/docker-compose.yml --profile meeoocat-api up -d
 
 environment:
   CONTAINER_NAME: meeoocat-api
