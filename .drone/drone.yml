@@ -1,5 +1,6 @@
 kind: pipeline
-name: development
+type: docker
+name: meeoocat-api-build
 
 trigger:
   branch:
@@ -18,7 +19,6 @@ steps:
       - ls -al
       - hostname
       - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME build
-
   - name: dev-meeocat-api-deploy
     image: docker/compose:1.28.5
     volumes:
