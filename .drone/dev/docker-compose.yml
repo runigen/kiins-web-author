@@ -1,0 +1,12 @@
+version: "1.0"
+services:
+  meeocat-api:
+    image: meeocat-api
+    build:
+      context: ../..
+      dockerfile: ./.drone/dev/Dockerfile_meeocat_api
+    restart: always
+    ports:
+      - "9140:9140"
+    environment:
+      JAVA_OPTS: "-Xms1048m -Xmx1048m"

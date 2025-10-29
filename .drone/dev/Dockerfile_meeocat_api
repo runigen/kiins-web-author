@@ -1,0 +1,67 @@
+######################################################################################################
+# Build stage ( AWS Image )
+######################################################################################################
+FROM public.ecr.aws/docker/library/gradle:8.6-jdk17 AS builder
+
+WORKDIR /home/gradle
+
+COPY build.gradle gradlew ./
+COPY gradle ./gradle
+
+RUN gradle dependencies
+
+COPY src ./src
+
+
+#RUN gradle clean war
+RUN gradle bootJar -x test
+
+# 생성 파일이 하나이기에 가능 ! (mv)
+RUN mv /home/gradle/build/libs/*.jar /home/gradle/build/libs/meeoocat-api.jar
+
+
+######################################################################################################
+# Image stage ( AWS Image )  corretto 17 로 이미지 변경 ( 2025 / 09 / 30 )
+######################################################################################################
+FROM public.ecr.aws/amazoncorretto/amazoncorretto:17
+
+
+ENV JAVA_HOME=/opt/openjdk-17
+ENV PATH=/opt/openjdk-17/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+ENV LGU_WORK=/meeoocat-api
+ENV LGU_API_FILE_NAME=meeoocat-api.jar
+ENV LGU_FULL_PATH=${LGU_WORK}/${LGU_API_FILE_NAME}
+WORKDIR ${LGU_WORK}
+
+COPY --from=builder /home/gradle/build/libs/meeoocat-api.jar ${LGU_FULL_PATH}
+
+
+# apk update
+RUN yum -y update \
+    && yum -y install tzdata \
+    && yum -y install bash \
+    && yum -y install curl \
+    && yum -y install net-tools \
+    && yum -y install procps \
+    && yum -y install vim
+
+
+EXPOSE 8080
+
+
+RUN printf '%s\n' \
+'#!/bin/sh' \
+'if [ -z "$JAVA_OPTS" ]; then' \
+'  echo "ERROR: JAVA_OPTS must be set"' \
+'  exit 1' \
+'fi' \
+'' \
+'echo ">>>>>>>>>>> JAVA_OPTS: $JAVA_OPTS"' \
+'mkdir -p /logs' \
+'exec java $JAVA_OPTS -jar "${LGU_FULL_PATH}"' \
+> entrypoint.sh \
+&& sed -i 's/\r$//' entrypoint.sh \
+&& chmod +x entrypoint.sh
+
+ENTRYPOINT ["/bin/sh", "-c", "./entrypoint.sh"]
