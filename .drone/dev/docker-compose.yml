@@ -1,6 +1,9 @@
 services:
   meeoocat-api:
     image: meeoocat-api
+    container_name: meeoocat-api
+    profiles:
+      - meeoocat-api
     build:
       context: ../..
       dockerfile: ./.drone/dev/Dockerfile_meeocat_api
