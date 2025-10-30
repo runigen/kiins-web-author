@@ -13,7 +13,8 @@ services:
       - "9140:9140"
     environment:
       JAVA_OPTS: "-Xms1048m -Xmx1048m"
-
+    volumes:
+      - /data/new_meeoocat:/meeoocat-api/docs
   meeoocat-web:
     image: meeoocat-web
     container_name: meeoocat-web
