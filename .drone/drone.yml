@@ -33,8 +33,8 @@ steps:
       - echo ">>>>>>>>>>> Deploy PWD >> $PWD"
       - ls -al
       - hostname
-      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_WEB_NAME down --remove-orphans
-      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_WEB_NAME up -d --remove-orphans
+      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_WEB_NAME down
+      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_WEB_NAME up -d
   - name: meeocat-deploy-api
     image: docker/compose:1.28.5
     volumes:
@@ -46,7 +46,7 @@ steps:
       - ls -al
       - hostname
       #- docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME down --remove-orphans
-      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME up -d --remove-orphans
+      - docker-compose -f $KIINS_COMPOSE_FILE --profile $CONTAINER_NAME up -d
 environment:
   CONTAINER_NAME: meeoocat-new-api
   CONTAINER_WEB_NAME: meeoocat-web
